@@ -2,7 +2,9 @@
 
 Interactive breathing app in **4 languages** (HU · RO · DE · EN). A single HTML file, no build step, no dependencies, no tracking.
 
-**Live:** https://laci141.github.io/Respiration/](https://respiration.pages.dev
+**Live:**     
+
+https://respiration.pages.dev
 
 ---
 
