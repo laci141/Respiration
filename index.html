@@ -46,7 +46,6 @@ body::before{content:""; position:fixed; inset:0; z-index:-1; transition:backgro
     radial-gradient(660px 620px at 48% 92%, var(--g3), transparent 62%),
     var(--bg)}
 
-/* ══ Glass panel ══ */
 .glass-panel{
   background:linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.045));
   border:1px solid rgba(255,255,255,.10); border-radius:20px;
@@ -60,7 +59,6 @@ body::before{content:""; position:fixed; inset:0; z-index:-1; transition:backgro
 .layout{display:flex; gap:22px; max-width:1140px; margin:0 auto; padding:26px 16px 64px; align-items:flex-start}
 main{flex:1; min-width:0; max-width:800px; margin:0 auto}
 
-/* ══ Menü ══ */
 .menu{width:246px; flex:0 0 246px; position:sticky; top:20px; max-height:calc(100vh - 40px); overflow-y:auto; padding:20px 14px}
 .menu-title{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:1.28rem; margin:2px 8px 2px; letter-spacing:-.01em}
 .menu-sub{font-size:.74rem; color:var(--ink-dim); margin:0 8px 12px}
@@ -93,7 +91,6 @@ header{text-align:center; margin-bottom:22px}
 h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem,5.2vw,2.4rem); margin:0 0 6px; letter-spacing:-.015em}
 .sub{color:var(--ink-dim); font-size:.94rem; margin:0}
 
-/* ══ Paletta ══ */
 .palbar{margin-bottom:18px}
 .palbar h3{font-size:.7rem; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-dim); margin:0 0 10px; font-weight:600}
 .pals{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:10px}
@@ -107,7 +104,6 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
 .sw i{flex:1; height:20px; border-radius:6px; display:block}
 .palnote{font-size:.78rem; color:var(--ink-dim); margin:11px 0 0}
 
-/* ══ Gömb ══ */
 .practice{text-align:center; margin-bottom:22px}
 .orb{position:relative; width:min(270px,68vw); aspect-ratio:1; margin:18px auto 6px; display:grid; place-items:center;
   cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent; --now:var(--p-in)}
@@ -149,7 +145,6 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
   .orb.ph-hold .orb-core,.orb.ph-rest .orb-core,.flowdot{animation:none !important}
 }
 
-/* ══ Kártya ══ */
 .card{margin-bottom:16px}
 .eyebrow{font-size:.71rem; text-transform:uppercase; letter-spacing:.13em; color:var(--ink-dim); margin:0 0 5px}
 .card h3{font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:1.3rem; margin:0 0 2px; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
@@ -167,7 +162,6 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
 .go{margin-top:16px; display:inline-block; cursor:pointer; border:1px solid color-mix(in srgb,var(--p-in) 55%,transparent);
   background:color-mix(in srgb,var(--p-in) 14%,transparent); color:var(--ink); border-radius:11px; padding:9px 18px; font-size:.9rem; font-family:inherit}
 
-/* ══ Elmetérkép ══ */
 .map-intro{margin-bottom:20px}
 .map-intro h2{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:1.5rem; margin:0 0 8px}
 .map-intro p{font-size:.93rem; margin:8px 0 0}
@@ -206,7 +200,6 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
 .st-short{font-size:.86rem; color:var(--ink-dim); margin:4px 0 0; display:block}
 .st-open{font-size:.74rem; color:var(--sa); margin-top:7px; display:inline-block}
 
-/* ══ Modal ══ */
 .modal{position:fixed; inset:0; z-index:60; display:none; align-items:center; justify-content:center; padding:16px}
 .modal.show{display:flex}
 .modal-bg{position:absolute; inset:0; background:color-mix(in srgb,var(--bg) 78%, transparent); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px)}
@@ -239,6 +232,20 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
 .m-nav button:disabled{opacity:.3; cursor:default}
 .disclaimer{margin-top:26px; font-size:.82rem; color:var(--ink-dim); text-align:center; padding:0 10px}
 .hidden{display:none}
+
+/* ══ Videók ══ */
+.vid-grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); margin-top:6px}
+.vid-card{background:linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.045));
+  border:1px solid rgba(255,255,255,.10); border-radius:18px; padding:14px;
+  backdrop-filter:blur(15px); -webkit-backdrop-filter:blur(15px);
+  box-shadow:0 18px 50px -22px rgba(0,0,0,.75)}
+.vid-wrap{position:relative; width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:rgba(0,0,0,.35)}
+.vid-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.vid-ph{position:absolute; inset:0; display:grid; place-items:center; color:var(--ink-dim);
+  font-family:"IBM Plex Mono",monospace; font-size:.82rem; letter-spacing:.35em}
+.vid-title{font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:1.02rem; margin:11px 4px 2px; color:var(--ink)}
+.vid-title.ph{color:var(--ink-dim); letter-spacing:.28em}
+@media (max-width:600px){.vid-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -303,6 +310,15 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
     <p class="disclaimer" id="mapDisc"></p>
   </div>
 
+  <div id="viewVid" class="hidden">
+    <header><h1 id="vidH1"></h1><p class="sub" id="vidSub"></p></header>
+    <section class="glass-panel map-intro">
+      <h2 id="vidTitle"></h2><p id="vidLead"></p>
+    </section>
+    <div class="vid-grid" id="vidGrid"></div>
+    <p class="disclaimer" id="vidDisc"></p>
+  </div>
+
   <p class="disclaimer" id="discEx"></p>
 </main>
 </div>
@@ -322,7 +338,6 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
 function rep(n,a){const r=[];for(let i=0;i<n;i++)r.push(...a);return r;}
 const PHNAME={in:"p-in",hold:"p-hold",out:"p-out",rest:"p-rest"};
 
-/* ph: [fázisfajta, másodperc, címke-index] */
 const META={
  box:{badge:"4·4·4·4",cycles:6,group:0,slots:[0,1,2,3],
    ph:[["in",4,0],["hold",4,1],["out",4,2],["rest",4,3]]},
@@ -347,7 +362,6 @@ const META={
 };
 const EXKEYS=Object.keys(META);
 
-/* állomás: szín, ikon, számadatok (nyelvfüggetlen értékek) */
 const SMETA=[
  {id:"orr",c:"var(--p-in)",v:["37 °C","~100 %","~80 %"],
   ico:'<svg viewBox="0 0 24 24" fill="none" stroke="var(--p-in)" stroke-width="1.6" stroke-linecap="round"><path d="M9 3v6.5c0 2-3 3.2-3 6 0 2.2 1.8 3.5 4 3.5h5c2.2 0 4-1.3 4-3.5 0-2.8-3-4-3-6V3"/><path d="M8.5 16.5h7"/></svg>'},
@@ -373,7 +387,6 @@ const SMETA=[
   ico:'<svg viewBox="0 0 24 24" fill="none" stroke="var(--p-in)" stroke-width="1.6" stroke-linecap="round"><path d="M5 15c2.5-3.6 11.5-3.6 14 0"/><path d="M12 11V3"/><path d="M9 6l3-3 3 3"/></svg>'}
 ];
 
-/* ═══════════════ RAJZOK — d[] = feliratok az aktuális nyelven ═══════════════ */
 const F='font-family="IBM Plex Mono,monospace"';
 const DIA={
 orr:d=>`<svg class="dia" viewBox="0 0 470 300">
@@ -776,11 +789,34 @@ kilegzes:d=>`<svg class="dia" viewBox="0 0 470 300">
 </svg>`
 };
 
-/* ═══ NYELVI ADATOK — a build ide fűzi be a L objektumot ═══ */
+/* ═══ VIDEÓK ═══
+   Az id a YouTube URL "watch?v=" utáni rész.
+   Pl. https://youtu.be/QpsjglWKp3o  →  id: "QpsjglWKp3o"
+   Ha az id üres, a helyén „Hamarosan…” jelenik meg.
+   A title üresen hagyható – akkor „Videó 1” … „Videó 8” lesz.
+   Ha saját címet akarsz, írd be: title:"A saját cím".                */
+const VIDEOS=[
+  {id:"QpsjglWKp3o", title:""},
+  {id:"_Z72MXiV6bM", title:""},
+  {id:"", title:""},
+  {id:"", title:""},
+  {id:"", title:""},
+  {id:"", title:""},
+  {id:"", title:""},
+  {id:"", title:""}
+];
+
+/* ═══ NYELVI ADATOK ═══ */
 const L={};
+
 L.hu={
 ui:{title:"Respiration — légzőgyakorlatok és a levegő útja",menuSub:"gyakorlatok · anatómia",
  palTitle:"Színvilág — a 4 fázis színe",mapGroup:"Elmetérkép",mapItem:"A levegő útja",
+ vidGroup:"Videók",vidItem:"YouTube videók",
+ vidH1:"YouTube videók",vidSub:"8 videó · légzés, technikák, anatómia",
+ vidTitle:"Videótár",
+ vidLead:"Ide gyűjtöm a légzéssel, a technikákkal és a levegő útjával kapcsolatos videókat. A címek helye egyelőre üres – szabadon átírhatók.",
+ vidSoon:"Hamarosan…",vidPlaceholder:"Videó {n}",
  groups:["Nyugtató alapok","Jóga pránajáma","Élénkítő · belső tűz"],
  exH1:"Gyógyító légzőgyakorlatok",exSub:"10 technika · vezetett gyakorlás és kézikönyv",
  mapH1:"A levegő útja",mapSub:"Elmetérkép · 11 állomás az orrtól a sejtig és vissza",
@@ -929,7 +965,7 @@ map:[
 {name:"Szív és artériák",phase:"O₂-szállítás",tag:"Bal szívfél: a nagy nyomású szivattyú",
  short:"A tüdőből visszatérő, oxigéndús vér a bal szívfélen át indul a testbe.",
  cap:"A szív négy ürege metszetben. Lila a CO₂-dús, rózsaszín az oxigéndús oldal; a rövid vonalak a billentyűk.",
- what:"A frissen oxigéndús vér a tüdővénákon át a bal pitvarba érkezik, onnan a billentyűn keresztül a bal kamrába, ami a test legerősebb izmos szivattyúja – a rajzon jól látszik, hogy a fala jóval vastagabb, mint a jobb oldalé. Innen indul az aortába, majd egyre kisebb artériákon át el a hajszálerekig. A jobb oldal ugyanennyi vért mozgat, de csak a tüdőig, sokkal kisebb nyomással. Nyugalomban a szív percenként nagyjából öt liter vért mozgat meg, és egy vörösvértest teljes körútja kevesebb mint egy perc.",
+ what:"A frissen oxigéndús vér a tüdővénákon át a bal pitvarba érkezik, onnan a billentyűn keresztül a bal kamrába, ami a test legerősebb izmos szivattyúja – a rajzon jól látszik, hogy a fala jóval vastagabb, mint a jobb oldalé. Innen indul az aortába, majd egyre kisebb artériákon át el a hajszálerekig. A jobb oldal ugyanannyi vért mozgat, de csak a tüdőig, sokkal kisebb nyomással. Nyugalomban a szív percenként nagyjából öt liter vért mozgat meg, és egy vörösvértest teljes körútja kevesebb mint egy perc.",
  sci:"A tüdő- és a testkeringés sorba van kapcsolva, ezért a két szívfél ugyanannyi vért mozgat, csak nagyon eltérő nyomáson. Belégzéskor a mellkasban csökkenő nyomás több vért szív vissza a szívbe – ezért gyorsul a pulzusod belégzésnél, és lassul kilégzésnél.",
  tie:"Ez a pulzus-hullámzás a légzési szinuszaritmia, a szívritmus-variabilitás alapja. Ezért mérhető a lassú légzés hatása közvetlenül a szíven.",
  sl:["nyugalmi perctérfogat","egy teljes körút","artériás O₂-nyomás"],exs:["koherens","box"],
@@ -971,6 +1007,11 @@ map:[
 L.ro={
 ui:{title:"Respiration — exerciții de respirație și drumul aerului",menuSub:"exerciții · anatomie",
  palTitle:"Paletă de culori — culorile celor 4 faze",mapGroup:"Hartă mentală",mapItem:"Drumul aerului",
+ vidGroup:"Videoclipuri",vidItem:"Videoclipuri YouTube",
+ vidH1:"Videoclipuri YouTube",vidSub:"8 videoclipuri · respirație, tehnici, anatomie",
+ vidTitle:"Videotecă",
+ vidLead:"Aici adun videoclipurile despre respirație, tehnici și drumul aerului. Titlurile sunt deocamdată goale – le poți completa liber.",
+ vidSoon:"În curând…",vidPlaceholder:"Videoclipul {n}",
  groups:["Bazele calmante","Pranayama yoga","Energizante · focul interior"],
  exH1:"Exerciții de respirație vindecătoare",exSub:"10 tehnici · practică ghidată și manual",
  mapH1:"Drumul aerului",mapSub:"Hartă mentală · 11 stații de la nas până la celulă și înapoi",
@@ -1161,6 +1202,11 @@ map:[
 L.de={
 ui:{title:"Respiration — Atemübungen und der Weg der Luft",menuSub:"Übungen · Anatomie",
  palTitle:"Farbwelt — die Farben der 4 Phasen",mapGroup:"Mindmap",mapItem:"Der Weg der Luft",
+ vidGroup:"Videos",vidItem:"YouTube-Videos",
+ vidH1:"YouTube-Videos",vidSub:"8 Videos · Atmung, Techniken, Anatomie",
+ vidTitle:"Videothek",
+ vidLead:"Hier sammle ich Videos zu Atmung, Techniken und dem Weg der Luft. Die Titel sind vorerst leer – du kannst sie frei ausfüllen.",
+ vidSoon:"Demnächst…",vidPlaceholder:"Video {n}",
  groups:["Beruhigende Grundlagen","Yoga-Pranayama","Belebend · inneres Feuer"],
  exH1:"Heilsame Atemübungen",exSub:"10 Techniken · geführte Praxis und Handbuch",
  mapH1:"Der Weg der Luft",mapSub:"Mindmap · 11 Stationen von der Nase bis zur Zelle und zurück",
@@ -1351,6 +1397,11 @@ map:[
 L.en={
 ui:{title:"Respiration — breathing exercises and the journey of air",menuSub:"exercises · anatomy",
  palTitle:"Colour scheme — the colours of the 4 phases",mapGroup:"Mind map",mapItem:"The journey of air",
+ vidGroup:"Videos",vidItem:"YouTube videos",
+ vidH1:"YouTube videos",vidSub:"8 videos · breathing, techniques, anatomy",
+ vidTitle:"Video library",
+ vidLead:"Here I collect videos on breathing, techniques and the journey of air. The titles are blank for now – fill them in freely.",
+ vidSoon:"Coming soon…",vidPlaceholder:"Video {n}",
  groups:["Calming basics","Yoga pranayama","Energising · inner fire"],
  exH1:"Healing breathing exercises",exSub:"10 techniques · guided practice and handbook",
  mapH1:"The journey of air",mapSub:"Mind map · 11 stations from the nose to the cell and back",
@@ -1545,6 +1596,7 @@ const nav=$("nav"),orb=$("orb"),core=$("orbCore"),rim=$("orbRim"),halo=$("halo")
  countEl=$("count"),phaseEl=$("phase"),noteEl=$("note"),startBtn=$("startBtn"),resetBtn=$("resetBtn"),
  exNameEl=$("exName"),exBadgeEl=$("exBadge"),cycleEl=$("cycleInfo"),barFill=$("barFill"),detailEl=$("detail"),
  menuEl=$("menu"),menuBtn=$("menuBtn"),backdrop=$("backdrop"),viewEx=$("viewEx"),viewMap=$("viewMap"),
+ viewVid=$("viewVid"),
  discEx=$("discEx"),track=$("track"),modal=$("modal"),modalBox=$("modalBox"),modalContent=$("modalContent");
 
 const LANGS=[["hu","HU"],["ro","RO"],["de","DE"],["en","EN"]];
@@ -1596,6 +1648,14 @@ function buildMenu(){
   b.innerHTML='<span class="dot sq"></span>'+T.ui.mapItem;
   b.onclick=()=>{showMap();closeMenu();};
   nav.appendChild(b);
+
+  const vh=document.createElement("p"); vh.className="menu-group"; vh.textContent=T.ui.vidGroup; nav.appendChild(vh);
+  const vb=document.createElement("button");
+  vb.className="menu-item"; vb.dataset.key="__vid"; vb.style.setProperty("--mi","var(--ink)");
+  vb.innerHTML='<span class="dot sq"></span>'+T.ui.vidItem;
+  vb.onclick=()=>{showVideos();closeMenu();};
+  nav.appendChild(vb);
+
   const COL=["var(--p-in)","var(--p-hold)","var(--p-out)"];
   T.ui.groups.forEach((g,gi)=>{
     const t=document.createElement("p"); t.className="menu-group"; t.textContent=g; nav.appendChild(t);
@@ -1631,6 +1691,27 @@ function buildMap(){
   $("mapLegend").innerHTML=T.ui.legend.map((x,i)=>
     '<span><i style="background:'+["var(--p-in)","var(--p-out)","var(--art)","var(--acc)","var(--ven)"][i]+'"></i>'+x+'</span>').join("");
 }
+
+/* ── videók ── */
+function buildVideos(){
+  $("vidH1").textContent=T.ui.vidH1;
+  $("vidSub").textContent=T.ui.vidSub;
+  $("vidTitle").textContent=T.ui.vidTitle;
+  $("vidLead").textContent=T.ui.vidLead;
+  $("vidDisc").textContent=T.ui.disc;
+  const g=$("vidGrid"); g.innerHTML="";
+  VIDEOS.forEach((v,i)=>{
+    const c=document.createElement("div"); c.className="vid-card";
+    const t=v.title || T.ui.vidPlaceholder.replace("{n}", i+1);
+    const inner=v.id
+      ? '<div class="vid-wrap"><iframe src="https://www.youtube-nocookie.com/embed/'+v.id+
+        '" title="'+t.replace(/"/g,"&quot;")+'" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+      : '<div class="vid-wrap"><span class="vid-ph">'+T.ui.vidSoon+'</span></div>';
+    c.innerHTML = inner + '<p class="vid-title'+(v.title?"":" ph")+'">'+t+'</p>';
+    g.appendChild(c);
+  });
+}
+
 function openStation(i){
   mapIdx=i; const s=SMETA[i], t=T.map[i];
   modalBox.style.setProperty("--sa",s.c);
@@ -1663,8 +1744,9 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowLeft"&&mapIdx>0)openStation(mapIdx-1);
 });
 
-function showMap(){reset();view="map";viewEx.classList.add("hidden");viewMap.classList.remove("hidden");discEx.classList.add("hidden");markMenu("__map");window.scrollTo({top:0,behavior:"smooth"});}
-function showEx(){view="ex";viewMap.classList.add("hidden");viewEx.classList.remove("hidden");discEx.classList.remove("hidden");}
+function showMap(){reset();view="map";viewEx.classList.add("hidden");viewMap.classList.remove("hidden");viewVid.classList.add("hidden");discEx.classList.add("hidden");markMenu("__map");window.scrollTo({top:0,behavior:"smooth"});}
+function showVideos(){reset();view="vid";viewEx.classList.add("hidden");viewMap.classList.add("hidden");viewVid.classList.remove("hidden");discEx.classList.add("hidden");markMenu("__vid");window.scrollTo({top:0,behavior:"smooth"});}
+function showEx(){view="ex";viewMap.classList.add("hidden");viewVid.classList.add("hidden");viewEx.classList.remove("hidden");discEx.classList.remove("hidden");}
 
 /* ── gyakorlat ── */
 function phases(key){
@@ -1783,8 +1865,10 @@ function buildAll(){
   $("mapTitle").textContent=T.ui.mapTitle; $("mapLead").textContent=T.ui.mapLead;
   $("mapDisc").textContent=T.ui.mapDisc; $("discEx").textContent=T.ui.disc;
   ["in","hold","out","rest"].forEach(k=>$("l-"+k).textContent=T.ui.ph[k]);
-  buildPals(); buildMenu(); buildMap();
-  if(view==="map"){showMap();} else {select(cur);}
+  buildPals(); buildMenu(); buildMap(); buildVideos();
+  if(view==="map"){showMap();}
+  else if(view==="vid"){showVideos();}
+  else {select(cur);}
 }
 setLang(lang);
 </script>
