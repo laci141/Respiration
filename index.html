@@ -104,7 +104,7 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
 .sw i{flex:1; height:20px; border-radius:6px; display:block}
 .palnote{font-size:.78rem; color:var(--ink-dim); margin:11px 0 0}
 
-.practice{text-align:center; margin-bottom:22px}
+.practice{text-align:center; margin-bottom:22px; scroll-margin-top:20px}
 .orb{position:relative; width:min(270px,68vw); aspect-ratio:1; margin:18px auto 6px; display:grid; place-items:center;
   cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent; --now:var(--p-in)}
 .orb.ph-in{--now:var(--p-in)} .orb.ph-hold{--now:var(--p-hold)}
@@ -162,7 +162,7 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
 .go{margin-top:16px; display:inline-block; cursor:pointer; border:1px solid color-mix(in srgb,var(--p-in) 55%,transparent);
   background:color-mix(in srgb,var(--p-in) 14%,transparent); color:var(--ink); border-radius:11px; padding:9px 18px; font-size:.9rem; font-family:inherit}
 
-.map-intro{margin-bottom:20px}
+.map-intro{margin-bottom:20px; scroll-margin-top:20px}
 .map-intro h2{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:1.5rem; margin:0 0 8px}
 .map-intro p{font-size:.93rem; margin:8px 0 0}
 .legend{display:flex; gap:14px; flex-wrap:wrap; margin-top:14px; font-size:.78rem; color:var(--ink-dim)}
@@ -243,8 +243,10 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
 .vid-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
 .vid-ph{position:absolute; inset:0; display:grid; place-items:center; color:var(--ink-dim);
   font-family:"IBM Plex Mono",monospace; font-size:.82rem; letter-spacing:.35em}
-.vid-title{font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:1.02rem; margin:11px 4px 2px; color:var(--ink)}
-.vid-title.ph{color:var(--ink-dim); letter-spacing:.28em}
+.vid-title{font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:1.02rem;
+  margin:11px 4px 2px; color:var(--ink); display:flex; flex-direction:column; gap:2px; min-height:2.8em}
+.vid-line{display:block; line-height:1.32}
+.vid-line.placeholder{color:var(--ink-dim); letter-spacing:.18em}
 @media (max-width:600px){.vid-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -277,7 +279,7 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
   </section>
 
   <div id="viewEx">
-    <header><h1 id="exH1"></h1><p class="sub" id="exSub"></p></header>
+    <header id="exHeader"><h1 id="exH1"></h1><p class="sub" id="exSub"></p></header>
     <section class="glass-panel practice" id="practice">
       <div class="orb" id="orb">
         <div class="halo" id="halo"></div>
@@ -301,8 +303,8 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
   </div>
 
   <div id="viewMap" class="hidden">
-    <header><h1 id="mapH1"></h1><p class="sub" id="mapSub"></p></header>
-    <section class="glass-panel map-intro">
+    <header id="mapHeader"><h1 id="mapH1"></h1><p class="sub" id="mapSub"></p></header>
+    <section class="glass-panel map-intro" id="mapIntro">
       <h2 id="mapTitle"></h2><p id="mapLead"></p>
       <div class="legend" id="mapLegend"></div>
     </section>
@@ -311,8 +313,8 @@ h1{font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(1.7rem
   </div>
 
   <div id="viewVid" class="hidden">
-    <header><h1 id="vidH1"></h1><p class="sub" id="vidSub"></p></header>
-    <section class="glass-panel map-intro">
+    <header id="vidHeader"><h1 id="vidH1"></h1><p class="sub" id="vidSub"></p></header>
+    <section class="glass-panel map-intro" id="vidIntro">
       <h2 id="vidTitle"></h2><p id="vidLead"></p>
     </section>
     <div class="vid-grid" id="vidGrid"></div>
@@ -418,7 +420,6 @@ orr:d=>`<svg class="dia" viewBox="0 0 470 300">
   <text x="396" y="112">${d[2]}</text><text x="346" y="262">${d[3]}</text><text x="102" y="52">${d[4]}</text>
   <text x="34" y="168">${d[5]}</text></g>
 </svg>`,
-
 legcso:d=>`<svg class="dia" viewBox="0 0 470 300">
  <path d="M92 26 C92 14 128 10 132 26 L136 44 C152 48 156 58 154 68 L150 82 L156 96" fill="none" stroke="var(--out)" stroke-width="1.3"/>
  <path d="M90 46 C90 34 136 34 138 48 L140 62 C140 72 90 72 90 62 Z" fill="var(--tis)" opacity=".22" stroke="var(--out)" stroke-width="1.2"/>
@@ -459,7 +460,6 @@ legcso:d=>`<svg class="dia" viewBox="0 0 470 300">
   <text x="6" y="256">${d[6]}</text><text x="206" y="244">${d[7]}</text>
   <text x="150" y="70">${d[8]}</text><text x="88" y="212">${d[9]}</text></g>
 </svg>`,
-
 horgok:d=>`<svg class="dia" viewBox="0 0 470 300">
  <path d="M212 40 C176 46 140 62 116 88 C86 122 74 172 78 214 C80 244 96 262 124 264 C160 266 196 250 208 220 C216 198 218 150 216 108 Z" fill="var(--tis)" opacity=".13" stroke="var(--out)" stroke-width="1.3"/>
  <path d="M258 40 C294 46 330 62 354 88 C384 122 396 172 392 214 C390 244 374 262 346 264 C310 266 280 252 266 224 C254 200 254 176 256 148 C258 120 256 74 258 40 Z" fill="var(--tis)" opacity=".13" stroke="var(--out)" stroke-width="1.3"/>
@@ -498,7 +498,6 @@ horgok:d=>`<svg class="dia" viewBox="0 0 470 300">
   <text x="80" y="98">${d[4]}</text><text x="320" y="270">${d[5]}</text>
   <text x="268" y="164" fill="var(--art)">${d[6]}</text></g>
 </svg>`,
-
 alveolus:d=>`<svg class="dia" viewBox="0 0 470 300">
  <path d="M14 116 C34 112 52 114 68 122" fill="none" stroke="var(--p-in)" stroke-width="9" stroke-linecap="round"/>
  <path d="M68 122 C82 108 92 96 96 84 M68 122 C80 138 90 152 94 166 M68 122 C88 126 106 130 122 132" fill="none" stroke="var(--p-in)" stroke-width="5.5" stroke-linecap="round"/>
@@ -540,7 +539,6 @@ alveolus:d=>`<svg class="dia" viewBox="0 0 470 300">
   <text x="10" y="102">${d[7]}</text><text x="14" y="260">${d[8]}</text><text x="190" y="42" fill="var(--art)">${d[9]}</text>
   <text x="286" y="228">${d[10]}</text></g>
 </svg>`,
-
 gazcsere:d=>`<svg class="dia" viewBox="0 0 470 300">
  <rect x="16" y="30" width="182" height="240" rx="16" fill="var(--air)" opacity=".12" stroke="var(--p-out)" stroke-width="1.4"/>
  <rect x="228" y="30" width="226" height="240" rx="16" fill="var(--art)" opacity=".13" stroke="var(--art)" stroke-width="1.4"/>
@@ -577,7 +575,6 @@ gazcsere:d=>`<svg class="dia" viewBox="0 0 470 300">
  <text x="86" y="192" ${F} font-size="11" fill="var(--ven)">→ 40 mmHg</text>
  <text x="26" y="264" ${F} font-size="8.8" fill="var(--lbl)">${d[4]}</text>
 </svg>`,
-
 hemoglobin:d=>`<svg class="dia" viewBox="0 0 470 300">
  <ellipse cx="128" cy="150" rx="106" ry="76" fill="var(--art)" opacity=".18" stroke="var(--art)" stroke-width="1.8"/>
  <ellipse cx="128" cy="150" rx="52" ry="34" fill="var(--bg)" opacity=".28" stroke="var(--art)" stroke-width="1" stroke-dasharray="4 3"/>
@@ -608,7 +605,6 @@ hemoglobin:d=>`<svg class="dia" viewBox="0 0 470 300">
  <text x="296" y="126" ${F} font-size="8.8" fill="var(--art)">${d[7]}</text>
  <text x="296" y="138" ${F} font-size="8.8" fill="var(--art)">${d[8]}</text>
 </svg>`,
-
 sziv:d=>`<svg class="dia" viewBox="0 0 470 300">
  <path d="M232 276 C176 244 132 204 128 158 C124 118 148 96 176 98 C196 99 212 110 222 126 C232 108 250 98 270 98 C300 96 328 118 326 158 C322 208 288 246 232 276 Z" fill="var(--tis)" opacity=".12" stroke="var(--out)" stroke-width="1.4"/>
  <path d="M226 126 C210 112 186 108 172 118 C156 130 152 152 158 172 C164 192 182 210 202 224 C212 202 220 172 226 126 Z" fill="var(--ven)" opacity=".30"/>
@@ -638,7 +634,6 @@ sziv:d=>`<svg class="dia" viewBox="0 0 470 300">
  <text x="14" y="188" ${F} font-size="8.4" fill="var(--lbl)">${d[12]}</text>
  <text x="14" y="200" ${F} font-size="8.4" fill="var(--lbl)">${d[13]}</text>
 </svg>`,
-
 sejt:d=>`<svg class="dia" viewBox="0 0 470 300">
  <ellipse cx="240" cy="150" rx="182" ry="104" fill="var(--acc)" opacity=".10" stroke="var(--acc)" stroke-width="1.6"/>
  <ellipse cx="240" cy="150" rx="168" ry="90" fill="none" stroke="var(--acc)" stroke-width="1.4" opacity=".75"/>
@@ -681,7 +676,6 @@ sejt:d=>`<svg class="dia" viewBox="0 0 470 300">
  <g stroke="var(--lbl)" stroke-width=".8" opacity=".65" fill="none"><path d="M240 246 L240 272"/><path d="M76 150 L44 150"/></g>
  <g ${F} font-size="9" fill="var(--lbl)"><text x="240" y="288" text-anchor="middle">${d[5]}</text><text x="4" y="146">${d[6]}</text><text x="4" y="158">${d[7]}</text></g>
 </svg>`,
-
 co2:d=>`<svg class="dia" viewBox="0 0 470 300">
  <ellipse cx="150" cy="150" rx="126" ry="94" fill="var(--ven)" opacity=".14" stroke="var(--ven)" stroke-width="2"/>
  <ellipse cx="150" cy="150" rx="60" ry="42" fill="var(--bg)" opacity=".22" stroke="var(--ven)" stroke-width=".9" stroke-dasharray="4 3"/>
@@ -720,7 +714,6 @@ co2:d=>`<svg class="dia" viewBox="0 0 470 300">
  <path d="M292 246 L268 240" stroke="var(--lbl)" stroke-width="1" marker-end="url(#mDim)"/>
  <text x="150" y="276" ${F} font-size="9.2" fill="var(--lbl)" text-anchor="middle">${d[11]}</text>
 </svg>`,
-
 vissza:d=>`<svg class="dia" viewBox="0 0 470 300">
  <path d="M118 40 C82 46 56 68 46 100 C34 138 42 176 62 196 C80 214 106 212 116 190 C124 172 124 100 118 40 Z" fill="var(--tis)" opacity=".13" stroke="var(--out)" stroke-width="1.2"/>
  <path d="M148 40 C184 46 210 68 220 100 C232 138 224 176 204 196 C186 214 160 212 150 190 C142 172 142 100 148 40 Z" fill="var(--tis)" opacity=".13" stroke="var(--out)" stroke-width="1.2"/>
@@ -747,7 +740,6 @@ vissza:d=>`<svg class="dia" viewBox="0 0 470 300">
  <text x="410" y="42" ${F} font-size="9" fill="var(--lbl)" text-anchor="end">${d[11]}</text>
  <text x="410" y="56" ${F} font-size="8.2" fill="var(--lbl)" text-anchor="end">${d[12]}</text>
 </svg>`,
-
 kilegzes:d=>`<svg class="dia" viewBox="0 0 470 300">
  <g stroke="var(--out)" stroke-width="1.5" fill="none">
   <path d="M112 34 L112 156"/>
@@ -789,21 +781,27 @@ kilegzes:d=>`<svg class="dia" viewBox="0 0 470 300">
 </svg>`
 };
 
-/* ═══ VIDEÓK ═══
+/* ═══ VIDEÓK — 16 db, minden cím 2 sorban ═══
    Az id a YouTube URL "watch?v=" utáni rész.
-   Pl. https://youtu.be/QpsjglWKp3o  →  id: "QpsjglWKp3o"
-   Ha az id üres, a helyén „Hamarosan…” jelenik meg.
-   A title üresen hagyható – akkor „Videó 1” … „Videó 8” lesz.
-   Ha saját címet akarsz, írd be: title:"A saját cím".                */
+   t = [első sor, második sor]
+   Ha az id üres, a helyén „Hamarosan…” jelenik meg.                 */
 const VIDEOS=[
-  {id:"QpsjglWKp3o", title:""},
-  {id:"_Z72MXiV6bM", title:""},
-  {id:"", title:""},
-  {id:"", title:""},
-  {id:"", title:""},
-  {id:"", title:""},
-  {id:"", title:""},
-  {id:"", title:""}
+  {id:"QpsjglWKp3o", t:["Kormány Krisztián – Ha ezt tudtam volna 30 évesen,","jobban élvezhettem volna az életet."]},
+  {id:"_Z72MXiV6bM", t:["Paksi András – A légzési technika,","ami megmentette az életemet."]},
+  {id:"", t:["Videó 3",""]},
+  {id:"", t:["Videó 4",""]},
+  {id:"", t:["Videó 5",""]},
+  {id:"", t:["Videó 6",""]},
+  {id:"", t:["Videó 7",""]},
+  {id:"", t:["Videó 8",""]},
+  {id:"", t:["Videó 9",""]},
+  {id:"", t:["Videó 10",""]},
+  {id:"", t:["Videó 11",""]},
+  {id:"", t:["Videó 12",""]},
+  {id:"", t:["Videó 13",""]},
+  {id:"", t:["Videó 14",""]},
+  {id:"", t:["Videó 15",""]},
+  {id:"", t:["Videó 16",""]}
 ];
 
 /* ═══ NYELVI ADATOK ═══ */
@@ -813,7 +811,7 @@ L.hu={
 ui:{title:"Respiration — légzőgyakorlatok és a levegő útja",menuSub:"gyakorlatok · anatómia",
  palTitle:"Színvilág — a 4 fázis színe",mapGroup:"Elmetérkép",mapItem:"A levegő útja",
  vidGroup:"Videók",vidItem:"YouTube videók",
- vidH1:"YouTube videók",vidSub:"8 videó · légzés, technikák, anatómia",
+ vidH1:"YouTube videók",vidSub:"16 videó · légzés, technikák, anatómia",
  vidTitle:"Videótár",
  vidLead:"Ide gyűjtöm a légzéssel, a technikákkal és a levegő útjával kapcsolatos videókat. A címek helye egyelőre üres – szabadon átírhatók.",
  vidSoon:"Hamarosan…",vidPlaceholder:"Videó {n}",
@@ -1008,7 +1006,7 @@ L.ro={
 ui:{title:"Respiration — exerciții de respirație și drumul aerului",menuSub:"exerciții · anatomie",
  palTitle:"Paletă de culori — culorile celor 4 faze",mapGroup:"Hartă mentală",mapItem:"Drumul aerului",
  vidGroup:"Videoclipuri",vidItem:"Videoclipuri YouTube",
- vidH1:"Videoclipuri YouTube",vidSub:"8 videoclipuri · respirație, tehnici, anatomie",
+ vidH1:"Videoclipuri YouTube",vidSub:"16 videoclipuri · respirație, tehnici, anatomie",
  vidTitle:"Videotecă",
  vidLead:"Aici adun videoclipurile despre respirație, tehnici și drumul aerului. Titlurile sunt deocamdată goale – le poți completa liber.",
  vidSoon:"În curând…",vidPlaceholder:"Videoclipul {n}",
@@ -1203,7 +1201,7 @@ L.de={
 ui:{title:"Respiration — Atemübungen und der Weg der Luft",menuSub:"Übungen · Anatomie",
  palTitle:"Farbwelt — die Farben der 4 Phasen",mapGroup:"Mindmap",mapItem:"Der Weg der Luft",
  vidGroup:"Videos",vidItem:"YouTube-Videos",
- vidH1:"YouTube-Videos",vidSub:"8 Videos · Atmung, Techniken, Anatomie",
+ vidH1:"YouTube-Videos",vidSub:"16 Videos · Atmung, Techniken, Anatomie",
  vidTitle:"Videothek",
  vidLead:"Hier sammle ich Videos zu Atmung, Techniken und dem Weg der Luft. Die Titel sind vorerst leer – du kannst sie frei ausfüllen.",
  vidSoon:"Demnächst…",vidPlaceholder:"Video {n}",
@@ -1398,7 +1396,7 @@ L.en={
 ui:{title:"Respiration — breathing exercises and the journey of air",menuSub:"exercises · anatomy",
  palTitle:"Colour scheme — the colours of the 4 phases",mapGroup:"Mind map",mapItem:"The journey of air",
  vidGroup:"Videos",vidItem:"YouTube videos",
- vidH1:"YouTube videos",vidSub:"8 videos · breathing, techniques, anatomy",
+ vidH1:"YouTube videos",vidSub:"16 videos · breathing, techniques, anatomy",
  vidTitle:"Video library",
  vidLead:"Here I collect videos on breathing, techniques and the journey of air. The titles are blank for now – fill them in freely.",
  vidSoon:"Coming soon…",vidPlaceholder:"Video {n}",
@@ -1619,6 +1617,20 @@ function setLang(code){
   buildAll();
 }
 
+/* ── görgetés a megfelelő szekcióhoz — EZ A JAVÍTÁS ── */
+function scrollToId(id){
+  // két lépésben: előbb megvárjuk, hogy a nézetváltás megtörténjen,
+  // aztán a lehető legpontosabban odagördítünk.
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      const el=document.getElementById(id);
+      if(!el) return;
+      const top=el.getBoundingClientRect().top+window.pageYOffset-16;
+      window.scrollTo({top:Math.max(top,0), behavior:"smooth"});
+    });
+  });
+}
+
 /* ── paletta ── */
 function buildPals(){
   const el=$("pals"); el.innerHTML="";
@@ -1692,7 +1704,7 @@ function buildMap(){
     '<span><i style="background:'+["var(--p-in)","var(--p-out)","var(--art)","var(--acc)","var(--ven)"][i]+'"></i>'+x+'</span>').join("");
 }
 
-/* ── videók ── */
+/* ── videók — 16 kártya, minden cím 2 sorban ── */
 function buildVideos(){
   $("vidH1").textContent=T.ui.vidH1;
   $("vidSub").textContent=T.ui.vidSub;
@@ -1702,12 +1714,17 @@ function buildVideos(){
   const g=$("vidGrid"); g.innerHTML="";
   VIDEOS.forEach((v,i)=>{
     const c=document.createElement("div"); c.className="vid-card";
-    const t=v.title || T.ui.vidPlaceholder.replace("{n}", i+1);
+    const t1=(v.t&&v.t[0])||T.ui.vidPlaceholder.replace("{n}", i+1);
+    const t2=(v.t&&v.t[1])||"";
+    const safe=(t1+" "+t2).replace(/"/g,"&quot;");
     const inner=v.id
       ? '<div class="vid-wrap"><iframe src="https://www.youtube-nocookie.com/embed/'+v.id+
-        '" title="'+t.replace(/"/g,"&quot;")+'" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+        '" title="'+safe+'" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
       : '<div class="vid-wrap"><span class="vid-ph">'+T.ui.vidSoon+'</span></div>';
-    c.innerHTML = inner + '<p class="vid-title'+(v.title?"":" ph")+'">'+t+'</p>';
+    c.innerHTML = inner + '<p class="vid-title">'+
+      '<span class="vid-line'+(v.t?"":" placeholder")+'">'+t1+'</span>'+
+      '<span class="vid-line">'+t2+'&nbsp;</span>'+
+    '</p>';
     g.appendChild(c);
   });
 }
@@ -1744,9 +1761,31 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowLeft"&&mapIdx>0)openStation(mapIdx-1);
 });
 
-function showMap(){reset();view="map";viewEx.classList.add("hidden");viewMap.classList.remove("hidden");viewVid.classList.add("hidden");discEx.classList.add("hidden");markMenu("__map");window.scrollTo({top:0,behavior:"smooth"});}
-function showVideos(){reset();view="vid";viewEx.classList.add("hidden");viewMap.classList.add("hidden");viewVid.classList.remove("hidden");discEx.classList.add("hidden");markMenu("__vid");window.scrollTo({top:0,behavior:"smooth"});}
-function showEx(){view="ex";viewMap.classList.add("hidden");viewVid.classList.add("hidden");viewEx.classList.remove("hidden");discEx.classList.remove("hidden");}
+function showMap(){
+  reset(); view="map";
+  viewEx.classList.add("hidden");
+  viewMap.classList.remove("hidden");
+  viewVid.classList.add("hidden");
+  discEx.classList.add("hidden");
+  markMenu("__map");
+  scrollToId("mapH1");
+}
+function showVideos(){
+  reset(); view="vid";
+  viewEx.classList.add("hidden");
+  viewMap.classList.add("hidden");
+  viewVid.classList.remove("hidden");
+  discEx.classList.add("hidden");
+  markMenu("__vid");
+  scrollToId("vidH1");
+}
+function showEx(){
+  view="ex";
+  viewMap.classList.add("hidden");
+  viewVid.classList.add("hidden");
+  viewEx.classList.remove("hidden");
+  discEx.classList.remove("hidden");
+}
 
 /* ── gyakorlat ── */
 function phases(key){
@@ -1762,7 +1801,7 @@ function select(key){
   const used=new Set(m.ph.map(p=>p[0]));
   ["in","hold","out","rest"].forEach(k=>{$("c-"+k).style.display=used.has(k)?"":"none";});
   renderDetail(key);
-  window.scrollTo({top:0,behavior:"smooth"});
+  scrollToId("practice");
 }
 function renderDetail(key){
   const e=T.ex[key],m=META[key];
@@ -1776,7 +1815,7 @@ function renderDetail(key){
    '<h4>'+T.ui.hSteps+'</h4><ol>'+e.steps.map(s=>'<li>'+s+'</li>').join("")+'</ol>'+
    '<div class="warn">'+e.warn+'</div>'+
    '<button class="go" id="goBtn">'+T.ui.goStart+'</button></section>';
-  $("goBtn").onclick=()=>{$("practice").scrollIntoView({behavior:"smooth"});setTimeout(()=>{if(state==="idle")start();},600);};
+  $("goBtn").onclick=()=>{scrollToId("practice");setTimeout(()=>{if(state==="idle")start();},400);};
 }
 
 function setOrbPhase(p,dur){
